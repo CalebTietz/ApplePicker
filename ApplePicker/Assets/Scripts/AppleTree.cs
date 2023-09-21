@@ -6,15 +6,15 @@ public class AppleTree : MonoBehaviour {
 
 
     public GameObject applePrefab;
+    public Camera = Camera.main;
     public float boundary;
     public float dropRate;
-    public float initVel;
+    public float initVel = 1f;
     public float changeRate;
 
     // Start is called before the first frame update
     void Start() {
-        boundary = 3f;
-        initVel = 1f;
+        boundary = camera.orthographicSize * 16 / 9; // half horizontal width of screen in unity 
     }
 
     // Update is called once per frame
