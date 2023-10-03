@@ -8,22 +8,21 @@ public class AppleTree : MonoBehaviour {
     public GameObject applePrefab;
     public Camera mainCamera;
     public float boundary;
-    public float dropRate;
-    public float initVel = 1f;
+    private float dropRate;
+    private float initVel = 2f;
     public float changeRate;
-
-    private Renderer treeRenderer;
 
     // Start is called before the first frame update
     void Start() {
         mainCamera = Camera.main;
-        treeRenderer = GetComponent<Renderer>();
-        Vector3 treeSize = treeRenderer.bounds.size;
         boundary = mainCamera.orthographicSize * 16 / 9; // half horizontal width of screen in unity
         Vector3 pos = transform.position;
-        pos.x = Random.Range(-boundary + treeSize.x / 2, boundary - treeSize.x / 2);
-        pos.y = mainCamera.orthographicSize - treeRenderer.bounds.size.y / 2;
+        pos.x = Random.Range(-boundary + 1, boundary - 1);
+        pos.y = mainCamera.orthographicSize - 2.5f;
         transform.position = pos;
+        dropRate = 2f;
+
+        Invoke("dropApple", dropRate / 2);
     }
 
     // Update is called once per frame
@@ -37,5 +36,13 @@ public class AppleTree : MonoBehaviour {
 
         transform.position = pos;
 
+
+    }
+
+    void dropApple() {
+        GameObject apple = Instantiate<GameObject>(applePrefab);
+        apple.transform.position = transform.position;
+        
+        Invoke("dropApple", dropRate);
     }
 }
