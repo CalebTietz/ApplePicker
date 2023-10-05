@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Apple : MonoBehaviour
 {
-    private float boundary = -20f;
+    private float boundary = -12f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,9 @@ public class Apple : MonoBehaviour
     {
         if(transform.position.y < boundary) {
             Destroy(gameObject);
+
+            GameObject player = GameObject.Find("Player");
+            player.GetComponent<Player>().AppleMissed();
         }
     }
 }
