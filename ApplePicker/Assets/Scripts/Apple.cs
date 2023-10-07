@@ -9,7 +9,7 @@ public class Apple : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        xBoundary = Camera.main.orthographicSize * 16 / 9 + 1f;
+        xBoundary = Camera.main.orthographicSize * 16 / 9 + 0.375f;
     }
 
     // Update is called once per frame

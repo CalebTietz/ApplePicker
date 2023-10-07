@@ -8,7 +8,7 @@ public class AppleTree : MonoBehaviour {
     public GameObject applePrefab;
     public Camera mainCamera;
     public float boundary;
-    private float dropRate = 1f;
+    private float dropRate = 0.5f; // interval of time in seconds between apples
     private float initVel = 10f;
     private float changeRate = 2f; // number of seconds before changing direction, on average
 

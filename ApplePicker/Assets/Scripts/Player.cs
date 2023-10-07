@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
 
     public float? getBasketTopY()
     {
-        if(topBasketLayerIndex >= 0) return basketList[topBasketLayerIndex].transform.position.y - 0.25f;
+        if(topBasketLayerIndex >= 0) return basketList[topBasketLayerIndex].transform.position.y - 0.5f;
         return null;
     }
 }
