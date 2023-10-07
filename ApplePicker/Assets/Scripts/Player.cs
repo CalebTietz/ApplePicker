@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boundary = Camera.main.orthographicSize * 16 / 9 + 4f;
+        boundary = Camera.main.orthographicSize * 16 / 9 - 1.5f;
         float yOff = 1f;
         float yBot = -8f;
         for(int i = 0; i < lives; i++) {
@@ -82,5 +82,11 @@ public class Player : MonoBehaviour
         {
             highScore.GetComponent<HighScore>().setHighScore(score);
         }
+    }
+
+    public float? getBasketTopY()
+    {
+        if(topBasketLayerIndex >= 0) return basketList[topBasketLayerIndex].transform.position.y - 0.25f;
+        return null;
     }
 }

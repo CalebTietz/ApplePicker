@@ -15,9 +15,9 @@ public class AppleTree : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         mainCamera = Camera.main;
-        boundary = mainCamera.orthographicSize * 16 / 9; // half horizontal width of screen in unity
+        boundary = mainCamera.orthographicSize * 16 / 9 - 1f; // half horizontal width of screen in unity
         Vector3 pos = transform.position;
-        pos.x = Random.Range(-boundary + 1, boundary - 1);
+        pos.x = Random.Range(-boundary + 2f, boundary - 2f);
         pos.y = mainCamera.orthographicSize - 4.5f;
         transform.position = pos;
 
@@ -31,9 +31,19 @@ public class AppleTree : MonoBehaviour {
         Vector3 pos = transform.position;
         pos.x += initVel * Time.deltaTime;
 
-        if (pos.x >= boundary - 0.001 || pos.x < -boundary + 0.001)
+        if (pos.x > boundary || pos.x < -boundary)
         {
             initVel *= -1;
+        }
+
+        if(pos.x > boundary)
+        {
+            pos.x = boundary - 0.001f;
+        }
+
+        if(pos.x < -boundary)
+        {
+            pos.x = -boundary + 0.001f;
         }
 
         transform.position = pos;

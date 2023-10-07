@@ -9,7 +9,7 @@ public class Apple : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        xBoundary = Camera.main.orthographicSize * 16 / 9 + 6f;
+        xBoundary = Camera.main.orthographicSize * 16 / 9 + 1f;
     }
 
     // Update is called once per frame
@@ -22,7 +22,9 @@ public class Apple : MonoBehaviour
             player.GetComponent<Player>().AppleMissed();
         }
 
-        if (Mathf.Abs(transform.position.x) > xBoundary && transform.position.y > yBoundary + 5f)
+        float? basketTopY = GameObject.Find("Player").GetComponent<Player>().getBasketTopY();
+        if (basketTopY == null) return;
+        if (Mathf.Abs(transform.position.x) > xBoundary && transform.position.y > basketTopY)
         {
             Destroy(gameObject);
         }
